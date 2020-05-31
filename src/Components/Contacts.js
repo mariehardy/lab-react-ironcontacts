@@ -9,6 +9,7 @@ export default class Contacts extends Component {
     contacts: contacts.slice(0, 5),
   };
   render() {
+
     return (
       <table className="contactTable">
         <thead>
@@ -20,22 +21,24 @@ export default class Contacts extends Component {
         </thead>
         {this.state.contacts.map((c) => {
           return [
-
-            <tr>
-              <td>
-                <img
-                  className="contactTable__img"
-                  src={c.pictureUrl}
-                  alt={c.name}
-                />
-              </td>
-              <td>
-                <p>{c.name}</p>
-              </td>
-              <td>
-                <p>{Math.round(c.popularity * 100) / 100}</p>
-              </td>
-            </tr>,
+            <tbody key={c.id}>
+            
+              <tr>
+                <td>
+                  <img
+                    className="contactTable__img"
+                    src={c.pictureUrl}
+                    alt={c.name}
+                  />
+                </td>
+                <td>
+                  <p>{c.name}</p>
+                </td>
+                <td>
+                  <p>{Math.round(c.popularity * 100) / 100}</p>
+                </td>
+              </tr>
+            </tbody>,
           ];
         })}
       </table>
