@@ -1,47 +1,29 @@
 //rfce + tab ==> function component
 //rcc + tab ==> class Component
 
-import React, { Component } from 'react';
-import contacts from '../contacts.json';
 
-export default class Contacts extends Component {
-  state = {
-    contacts: contacts.slice(0, 5),
-  };
-  render() {
+import React from 'react'
 
-    return (
-      <table className="contactTable">
-        <thead>
-          <tr>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Popularity</th>
-          </tr>
-        </thead>
-        {this.state.contacts.map((c) => {
-          return [
-            <tbody key={c.id}>
-            
+function Contacts(props) {
+  return (
+            <tbody>
               <tr>
                 <td>
                   <img
                     className="contactTable__img"
-                    src={c.pictureUrl}
-                    alt={c.name}
+                    src={props.pictureUrl}
+                    alt={props.name}
                   />
                 </td>
                 <td>
-                  <p>{c.name}</p>
+                  <p>{props.name}</p>
                 </td>
                 <td>
-                  <p>{Math.round(c.popularity * 100) / 100}</p>
+                  <p>{Math.round(props.popularity * 100) / 100}</p>
                 </td>
               </tr>
-            </tbody>,
-          ];
-        })}
-      </table>
-    );
-  }
+            </tbody>
+  )
 }
+
+export default Contacts
